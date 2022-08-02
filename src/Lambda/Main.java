@@ -17,13 +17,7 @@ public class Main {
             Function<? super T, ? extends U> ifTrue,
             Function<? super T, ? extends U> ifFalse) {
 
-        Function<T, U> function;
-        if (condition == true) {
-            function = ifTrue::apply;
-        } else {
-            function = ifFalse::apply;
-        }
-        return function;
+        return (x) -> condition.test(x) ? ifTrue.apply(x) : ifFalse.apply(x);
     }
 }
 
